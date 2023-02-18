@@ -9,6 +9,8 @@ import { ConfirmationComponent } from './components/confirmation/confirmation.co
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ProductListComponent } from './components/product-list/product-list.component';
+import { ProductItemComponent } from './components/product-item/product-item.component';
+import { ProductItemDetailComponent } from './components/product-item-detail/product-item-detail.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +18,9 @@ import { ProductListComponent } from './components/product-list/product-list.com
     CartComponent,
     ConfirmationComponent,
     NavbarComponent,
-    ProductListComponent
+    ProductListComponent,
+    ProductItemComponent,
+    ProductItemDetailComponent
   ],
   imports: [
     BrowserModule,
