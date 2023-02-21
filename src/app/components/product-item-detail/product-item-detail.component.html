@@ -1,1 +1,11 @@
-<p>product-item-detail works!</p>
+<div class="details-container">
+  <div class="img">
+    <img src="{{ product.url }}" alt="" />
+  </div>
+  <div class="detail-item">
+    <h1>{{ product.name }}</h1>
+    <p>{{ product.price }}</p>
+    <p>{{ product.description }}</p>
+    <a routerLink="/" class="back-link">Back to product list</a>
+  </div>
+</div>

@@ -12,16 +12,7 @@ export class ProductListComponent implements OnInit{
   products: Product[] = [];
   constructor(private productListService:ProductListService) {
   }
-  quantity = 0;
   
-
-  increase(): void{
-    this.quantity ++
-  }
-
-  reduce():void {
-    this.quantity --
-  }
 
   ngOnInit(): void {
     this.productListService.getData().subscribe(data => {
