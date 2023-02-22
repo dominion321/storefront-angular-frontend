@@ -1,1 +1,7 @@
-<p>confirmation works!</p>
+<div class="confirmation" *ngFor="let order of orders">
+    <h1 style="color:#33B5E5;">Success!🎉</h1>
+    <p>Thank you, <strong>{{order.fullname}}</strong> </p>
+    <p>Your <strong>${{order.amount}}</strong> order is confirmed!</p>
+    <p>Please allow 1-3 business day(s) for shipping.</p>
+    <button routerLink="/" class="btn btn-primary">Back to product list</button>
+</div>

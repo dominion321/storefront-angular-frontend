@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Order } from 'src/app/models/order';
 import { Product } from 'src/app/models/product';
 import { CartService } from 'src/app/services/cart.service';
+import { OrderService } from 'src/app/services/order.service';
 
 @Component({
   selector: 'app-cart',
@@ -10,9 +12,12 @@ import { CartService } from 'src/app/services/cart.service';
 export class CartComponent implements OnInit  {
   quantity = 0;
   amount = 0;
+  fullname = '';
+  cardno = 0;
+  address = '';
 
   productsInCart: Product[] = [];
-  constructor(private cartService: CartService) {  }
+  constructor(private cartService: CartService, private orderService:OrderService) {  }
 
   ngOnInit(): void {
     this.productsInCart = this.cartService.getProducts();
@@ -27,7 +32,12 @@ export class CartComponent implements OnInit  {
   }
 
   onSubmit() {
-
+    alert('nawa ooo')
+    let order: Order = {
+      amount:this.amount,
+      fullname: this.fullname
+    }
+    this.orderService.addToOrder(order);
   }
 
   
