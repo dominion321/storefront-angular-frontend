@@ -15,7 +15,7 @@ export class CartService {
 
   addToCart(product: Product): Product[] | undefined {
     for (let _ of this.productsInCart) {
-      if (_ === product) {
+      if (_.id === product.id) {
         return;
       }
     }

@@ -9,6 +9,7 @@ import { CartService } from 'src/app/services/cart.service';
 })
 export class CartComponent implements OnInit  {
   quantity = 0;
+  amount = 0;
 
   productsInCart: Product[] = [];
   constructor(private cartService: CartService) {  }
@@ -24,4 +25,10 @@ export class CartComponent implements OnInit  {
       console.log(this.productsInCart);
     }
   }
+
+  onSubmit() {
+
+  }
+
+  
 }

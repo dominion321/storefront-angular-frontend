@@ -19,9 +19,10 @@ img {
 }
 
 .detail-item {
-  margin-top: 300px;
+  margin-top: 250px;
   margin-left: 200px;
 }
 .back-link {
-  margin-top: 8px;
+  margin-top: 10px;
+  display: block;
 }
