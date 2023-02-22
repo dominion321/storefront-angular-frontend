@@ -3,23 +3,19 @@
   <div class="form">
     <form *ngIf="productsInCart.length !== 0" (ngSubmit)="onSubmit()">
         <div class="form-group">
-          <label for="fullname">Full name</label>
+          <label for="fullname" class="label">Full name</label>
           <input type="text" class="form-control" id="fullname" aria-describedby="fullname" placeholder="(minimum 3 character)" required minlength="3">
         </div>
         <div class="form-group">
-          <label for="address">Address</label>
+          <label class="label" for="address">Address</label>
           <input type="text" class="form-control" id="address" placeholder="(minimum 6 character)" required minlength="6">
         </div>
         <div class="form-group">
-            <label for="creditcard">Credit Card Number</label>
-            <input type="number" class="form-control" id="creditcard" aria-describedby="creditcard" placeholder="(16 digit number)" required minlength="16">
-            <small id="creditcard" class="form-text text-muted">We'll never share your payment details with anyone else.</small>
+            <label for="creditcard" class="label">Credit Card Number</label>
+            <input type="number" class="form-control input" id="creditcard" aria-describedby="creditcard" placeholder="(16 digit number)" required minlength="16">
+            <small id="creditcard" class="form-text text-muted label">We'll never share your payment details with anyone else.</small>
           </div>
-        <div class="form-group form-check">
-          <input type="checkbox" class="form-check-input" id="exampleCheck1">
-          <label class="form-check-label" for="exampleCheck1">Check me out</label>
-        </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" class="btn btn-primary label">Submit</button>
       </form>
   </div>
   <div class="cart-container" *ngFor="let product of productsInCart">
@@ -28,21 +24,12 @@
           <img src="{{ product.url }}" alt="" />
         </div>
         <div class="cart-details">
-          <h3>{{ product.name }}</h3>
+          <h6>{{ product.name }}</h6>
           <p>${{ product.price }}</p>
-          <select name="quantity" [(ngModel)]="quantity">
-            <option value="0">0</option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-            <option value="6">6</option>
-            <option value="7">7</option>
-            <option value="8">8</option>
-            <option value="9">9</option>
-            <option value="10">10</option>
-          </select>
+          <div class="amount">
+            <label for="amount">Amount:</label>
+            <input type="number" id="amount" name="amount" step="1" min="0">
+          </div>
         </div>
       </div>
     </div>
