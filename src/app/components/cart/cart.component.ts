@@ -8,6 +8,7 @@ import { CartService } from 'src/app/services/cart.service';
   styleUrls: ['./cart.component.css']
 })
 export class CartComponent implements OnInit  {
+  quantity = 0;
 
   productsInCart: Product[] = [];
   constructor(private cartService: CartService) {  }
@@ -17,9 +18,10 @@ export class CartComponent implements OnInit  {
   }
 
   removeFromCart(product: Product) {
-    if (product.quantity === 0){
+    if (this.quantity === 0){
       this.cartService.removeFromCart(product);
       this.productsInCart = this.productsInCart.filter(p => p != product);
+      console.log(this.productsInCart);
     }
   }
 }

@@ -11,8 +11,7 @@ import { ProductItemService } from 'src/app/services/product-item.service';
 export class ProductItemComponent {
   @Input() product: Product;
   @Output() productEmitted = new EventEmitter<number>();
-  quantity = 0;
-
+  
   productDetail: Product[] =  [];
   details: Product[] = [];
 

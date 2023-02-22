@@ -1,12 +1,14 @@
-<p *ngIf="productToShow.length === 0">Empty</p>
+<a routerLink="/" *ngIf="productToShow.length === 0">Back to product list</a>
 <div class="details-container" *ngFor="let product of productToShow">
   <div class="img">
     <img src="{{ product.url }}" alt="" />
   </div>
   <div class="detail-item">
     <h1>{{ product.name }}</h1>
-    <p>{{ product.price }}</p>
+    <p>${{ product.price }}</p>
     <p>{{ product.description }}</p>
-    <a routerLink="/" (click)="clearDetail()" class="back-link">Back to product list</a>
+    <a routerLink="/" (click)="clearDetail()" class="back-link"
+      >Back to product list</a
+    >
   </div>
 </div>

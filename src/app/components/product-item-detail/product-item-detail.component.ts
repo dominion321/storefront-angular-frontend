@@ -14,7 +14,6 @@ export class ProductItemDetailComponent implements OnInit {
 
   ngOnInit(): void {
     this.productToShow = this.productItemService.showDetails();
-    console.log(this.productItemService)
   }
   
   clearDetail(){
