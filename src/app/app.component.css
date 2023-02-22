@@ -1,9 +1,12 @@
 * {
     margin:0px;
     padding: 0;
-    background-color: blueviolet;
     outline: 0;
     border: 0;
     box-sizing: border-box
 
+}
+
+.margins {
+    margin: 40px 0px 40px 0px;
 }

@@ -19,6 +19,7 @@ export class CartComponent implements OnInit  {
   removeFromCart(product: Product) {
     if (product.quantity === 0){
       this.cartService.removeFromCart(product);
+      this.productsInCart = this.productsInCart.filter(p => p != product);
     }
   }
 }

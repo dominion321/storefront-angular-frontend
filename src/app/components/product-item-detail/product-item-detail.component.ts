@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Product } from 'src/app/models/product';
+import { ProductItemService } from 'src/app/services/product-item.service';
 
 @Component({
   selector: 'app-product-item-detail',
@@ -7,18 +8,17 @@ import { Product } from 'src/app/models/product';
   styleUrls: ['./product-item-detail.component.css'],
 })
 export class ProductItemDetailComponent implements OnInit {
-  @Input() product: Product;
+  productToShow: Product[] = [];
 
-  constructor() {
-    this.product = {
-      id: '',
-      name: '',
-      price: 0,
-      url: '',
-      description: '',
-      quantity: 0,
-    };
+  constructor(private productItemService: ProductItemService) {  }
+
+  ngOnInit(): void {
+    this.productToShow = this.productItemService.showDetails();
+    console.log(this.productItemService)
   }
-
-  ngOnInit(): void {}
+  
+  clearDetail(){
+    this.productItemService.clearDetail();
+    this.productToShow = [];
+  }
 }

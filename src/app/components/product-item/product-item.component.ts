@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Product } from 'src/app/models/product';
 import { CartService } from 'src/app/services/cart.service';
+import { ProductItemService } from 'src/app/services/product-item.service';
 
 @Component({
   selector: 'app-product-item',
@@ -13,8 +14,9 @@ export class ProductItemComponent {
   quantity = 0;
 
   productDetail: Product[] =  [];
+  details: Product[] = [];
 
-  constructor(private cartService:CartService) {
+  constructor(private cartService:CartService, private productItemService: ProductItemService) {
     this.product = {
       id: '1',
       name: '',
@@ -30,7 +32,7 @@ export class ProductItemComponent {
     alert(`${product.name} added to cart`);
   }
 
-  showDetails(product: Product): void {
-    this.productDetail.push(product);
+  addToDetails(product: Product): void {
+    this.productItemService.addToDetails(product);
   }
 }

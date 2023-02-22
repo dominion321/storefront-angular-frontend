@@ -1,5 +1,5 @@
 <div class="product-container">
-  <img routerLink ="/details/{{product.id}}" class="product-image" src="{{ product.url }}" alt="" />
+ <a routerLink ="/detail"><img (click)="addToDetails(product)" class="product-image" src="{{ product.url }}" alt="" /></a> 
   <p>{{ product.name }}</p>
   <p>{{ product.price }}</p>
   <select class="select-input" [(ngModel)]="quantity" name="quantity" id="" >
