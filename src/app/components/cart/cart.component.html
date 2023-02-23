@@ -1,7 +1,7 @@
 <p class="empty-cart" *ngIf="productsInCart.length === 0">Your cart is empty</p>
 <div class="cart">
   <div class="form">
-    <form #form="ngForm" *ngIf="productsInCart.length !== 0" (ngSubmit)="onSubmit()">
+    <form #form="ngForm" *ngIf="productsInCart.length !== 0">
         <div class="form-group">
           <label for="fullname" class="label">Full name</label>
           <input type="text" class="form-control" id="fullname" aria-describedby="fullname" placeholder="(minimum 3 character)" name="fullname" required minlength="3" [(ngModel)]="fullname">
@@ -15,7 +15,7 @@
             <input type="number" class="form-control input" id="creditcard" aria-describedby="creditcard" placeholder="(16 digit number)" name="creditcard" required min="16" [(ngModel)]="creditcard">
             <small id="creditcard" class="form-text text-muted label">We'll never share your payment details with anyone else.</small>
           </div>
-        <input type="submit" value="Submit" routerLink="/confirmation" class="btn btn-primary label" [disabled]="form.invalid" />
+        <button type="button" routerLink="/confirmation" class="btn btn-primary label" [disabled]="form.invalid" (click)="onSubmit()">Submit</button>
       </form>
   </div>
   <div class="cart-container" *ngFor="let product of productsInCart">

@@ -14,7 +14,6 @@ export class ConfirmationComponent implements OnInit {
   constructor(private orderService:OrderService){   }
 
 ngOnInit(): void {
-  // this.orders = this.orderService.getOrder();
-  this.orders= [{fullname: 'lol', amount: 90}]
+  this.orders = this.orderService.getOrder();  
 }
 }

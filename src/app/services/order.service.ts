@@ -10,8 +10,7 @@ export class OrderService {
   constructor() { }
 
   addToOrder(order: Order) {
-    this.order.push(order)
-
+    this.order.push(order);
   }
 
   getOrder(){

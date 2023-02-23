@@ -7,9 +7,9 @@ import { OrderService } from 'src/app/services/order.service';
 @Component({
   selector: 'app-cart',
   templateUrl: './cart.component.html',
-  styleUrls: ['./cart.component.css']
+  styleUrls: ['./cart.component.css'],
 })
-export class CartComponent implements OnInit  {
+export class CartComponent implements OnInit {
   quantity = 0;
   amount = 0;
   fullname = '';
@@ -17,31 +17,31 @@ export class CartComponent implements OnInit  {
   address = '';
 
   productsInCart: Product[] = [];
-  constructor(private cartService: CartService, private orderService:OrderService) {  }
+  constructor(
+    private cartService: CartService,
+    private orderService: OrderService
+  ) {}
 
   ngOnInit(): void {
     this.productsInCart = this.cartService.getProducts();
-    console.log(this.productsInCart);
   }
 
   removeFromCart(product: Product) {
-    if (this.quantity === 0){
+    if (this.quantity === 0) {
       this.cartService.removeFromCart(product);
-      this.productsInCart = this.productsInCart.filter(p => p != product);
-      console.log(this.productsInCart);
+      this.productsInCart = this.productsInCart.filter((p) => p != product);
     }
   }
 
-  productTotal(product:Product,number: number){ 
+  productTotal(product: Product, number: number) {
     alert(number);
   }
+
   onSubmit() {
-    alert('nawa ooo')
     let order: Order = {
-      amount:this.amount,
-      fullname: this.fullname
-    }
+      amount: this.amount,
+      fullname: this.fullname,
+    };
     this.orderService.addToOrder(order);
   }
-
 }
