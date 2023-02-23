@@ -13,7 +13,7 @@ export class CartComponent implements OnInit  {
   quantity = 0;
   amount = 0;
   fullname = '';
-  cardno = 0;
+  creditcard = 0;
   address = '';
 
   productsInCart: Product[] = [];
@@ -21,6 +21,7 @@ export class CartComponent implements OnInit  {
 
   ngOnInit(): void {
     this.productsInCart = this.cartService.getProducts();
+    console.log(this.productsInCart);
   }
 
   removeFromCart(product: Product) {
@@ -31,6 +32,9 @@ export class CartComponent implements OnInit  {
     }
   }
 
+  productTotal(product:Product,number: number){ 
+    alert(number);
+  }
   onSubmit() {
     alert('nawa ooo')
     let order: Order = {
@@ -40,5 +44,4 @@ export class CartComponent implements OnInit  {
     this.orderService.addToOrder(order);
   }
 
-  
 }

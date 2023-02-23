@@ -8,12 +8,13 @@ import { OrderService } from 'src/app/services/order.service';
   styleUrls: ['./confirmation.component.css']
 })
 export class ConfirmationComponent implements OnInit {
-
   orders: Order[] = []
+  
 
-  constructor(private orderService:OrderService){  }
+  constructor(private orderService:OrderService){   }
 
 ngOnInit(): void {
-  this.orders = this.orderService.getOrder();
+  // this.orders = this.orderService.getOrder();
+  this.orders= [{fullname: 'lol', amount: 90}]
 }
 }
