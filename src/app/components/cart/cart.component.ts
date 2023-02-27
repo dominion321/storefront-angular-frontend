@@ -16,6 +16,7 @@ export class CartComponent implements OnInit {
   creditcard = 0;
   address = '';
 
+
   productsInCart: Product[] = [];
   constructor(
     private cartService: CartService,
@@ -24,6 +25,9 @@ export class CartComponent implements OnInit {
 
   ngOnInit(): void {
     this.productsInCart = this.cartService.getProducts();
+    for(let product of this.productsInCart){
+      this.amount = [product.price * (product.quantity as number)].reduce((a,b) => a+b);
+    }
   }
 
   removeFromCart(product: Product) {
@@ -33,8 +37,17 @@ export class CartComponent implements OnInit {
     }
   }
 
-  productTotal(product: Product, number: number) {
-    alert(number);
+  productTotal() {
+    let allprice = [];
+    for(let product of this.productsInCart) {
+      if(product.quantity === 0) {
+        alert(`${product.name} has been removed.`);
+        this.productsInCart = this.productsInCart.filter((p) => product.id !== p.id);
+        return
+      }
+      allprice.push((product.quantity as number)* product.price)
+    }
+    this.amount = allprice.reduce((a,b) => a+b);
   }
 
   onSubmit() {
@@ -44,4 +57,5 @@ export class CartComponent implements OnInit {
     };
     this.orderService.addToOrder(order);
   }
+
 }

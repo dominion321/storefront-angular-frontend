@@ -12,7 +12,7 @@
         </div>
         <div class="form-group">
             <label for="creditcard" class="label">Credit Card Number</label>
-            <input type="number" class="form-control input" id="creditcard" aria-describedby="creditcard" placeholder="(16 digit number)" name="creditcard" required min="16" [(ngModel)]="creditcard">
+            <input type="number" class="form-control input" id="creditcard" aria-describedby="creditcard" placeholder="(16 digit number)" name="creditcard" required minlength="16" [(ngModel)]="creditcard">
             <small id="creditcard" class="form-text text-muted label">We'll never share your payment details with anyone else.</small>
           </div>
         <button type="button" routerLink="/confirmation" class="btn btn-primary label" [disabled]="form.invalid" (click)="onSubmit()">Submit</button>
@@ -28,13 +28,12 @@
           <p>${{ product.price }}</p>
           <div class="amount">
             <label for="amount">Amount:</label>
-            <input type="number" id="amount" name="amount" step="1" min="0" [(ngModel)]="amount" (change)="productTotal(product,amount)">
+            <input type="number" id="amount" name="amount" value="1" step="1" min="0" [(ngModel)]="product.quantity" (change)="productTotal()">
           </div>
-          <p>{{product.price * amount}}</p>
         </div>
       </div>
     </div>
-    <h3 *ngIf="productsInCart.length !== 0" class="total-amount">Total: $ {{ amount }}</h3>
+    <h3 *ngIf="productsInCart.length !== 0" class="total-amount">Total: $ {{ amount.toFixed(2) }}</h3>
  
   
 

@@ -24,3 +24,8 @@
 img {
   cursor: pointer;
 }
+
+#amount {
+  margin-bottom: 20px;
+  
+}
