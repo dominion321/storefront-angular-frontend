@@ -22,16 +22,17 @@ This application is made up of six components namely: cart, confirmation, navbar
 - Product-list - This is the component that renders all the product-items to the home directory.
 
 ## Models
+
 These are the data types of each entity within the application. They include: order, product.
 - 
 
 ## Routes
 
-- / - The Home directory. This is where users see a list of products available for purchase.
+- `/` - The Home directory. This is where users see a list of products available for purchase.
 
-- /cart - When a user adds a product to cart, it is added here. To view the cart, you can either click on 'Cart' at the navigation bar or navigate to `http://localhost:4200/cart` to open it. When navigated to without products added to it, the cart page will show a "This cart is empty" message.
+- `/cart` - When a user adds a product to cart, it is added here. To view the cart, you can either click on 'Cart' at the navigation bar or navigate to `http://localhost:4200/cart` to open it. When navigated to without products added to it, the cart page will show a "This cart is empty" message.
 
-- /confirmation -  After a successful checkout, this page will appear on your screen.
+- `/confirmation` -  After a successful checkout, this page will appear on your screen.
 
 
 
