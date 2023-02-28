@@ -1,8 +1,6 @@
 # ECommerce
 
-This is an e-commerce web application. It was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.1.3. The goal here is to 
-
-test out my knowledge of Angular in form of a project.
+This is an e-commerce web application. It was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.1.3. The goal here is to test out my knowledge of Angular in form of a project.
 
 ## Development server
 
@@ -11,11 +9,7 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The appli
 ## Components
 This application is made up of six components namely: cart, confirmation, navbar, product-item, product-item-detail, and product-list.
 
-- Cart: This component is a page that shows the list of added products to it and a way to process purchase (or checkout). You will see the added 
-
-products to cart on the left, a form requiring the user fills his/her details to checkout, and the total amount of the product at the bottom-left of the 
-
-screen
+- Cart: This component is a page that shows the list of added products to it and a way to process purchase (or checkout). You will see the added products to cart on the left, a form requiring the user fills his/her details to checkout, and the total amount of the product at the bottom-left of the screen
 
 - Confirmation -  This page shows a success message if an order has been checked out at the cart component. Else, it will show a blank screen.
 
@@ -28,6 +22,8 @@ screen
 - Product-list - This is the component that renders all the product-items to the home directory.
 
 ## Models
+These are the data types of each entity within the application. They include: order, product.
+- 
 
 ## Routes
 
