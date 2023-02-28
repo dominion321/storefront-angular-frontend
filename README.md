@@ -24,7 +24,18 @@ This application is made up of six components namely: cart, confirmation, navbar
 ## Models
 
 These are the data types of each entity within the application. They include: order, product.
-- 
+
+- Order - This model includes the following:
+- - fullname: string
+- - amount: string
+
+- Product - This model includes the following:
+- - id: string;
+- - name: string;
+- - price: number;
+- - url: string;
+- - description: string;
+- - quantity: number;
 
 ## Routes
 
