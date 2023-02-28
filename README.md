@@ -1,14 +1,24 @@
 # ECommerce
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.1.3.
+This is an e-commerce web application. It was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.1.3. The goal here is to test out my knowledge of Angular in form of a project.
 
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
 
-## Code scaffolding
+## Components
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Models
+
+## Routes
+
+- / - The Home directory. This is where users see a list of products available for purchase.
+
+- /cart - When a user adds a product to cart, it is added here. To view the cart, you can either click on 'Cart' at the navigation bar or navigate to `http://localhost:4200/cart` to open it.
+
+- /confirmation -  After a successful checkout, this page will appear on your screen.
+
+
 
 ## Build
 
