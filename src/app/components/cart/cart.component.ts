@@ -41,28 +41,22 @@ export class CartComponent implements OnInit {
 
   ngOnInit(): void {
     this.productsInCart = this.cartService.getProducts();
-    for (let product of this.productsInCart) {
-      this.amount = [product.price * (product.quantity as number)].reduce(
-        (a, b) => a + b
-      );
-    }
+    this.productTotal();
   }
 
   removeFromCart(product: Product) {
     this.cartService.removeFromCart(product);
     this.productsInCart = this.productsInCart.filter((p) => p != product);
-    this.amount = 0;
-    for(let product of this.productsInCart) {
-      this.amount += (product.quantity * product.price)
-    }
+    this.productTotal();
   }
 
   productTotal() {
-    let allprice = [];
+    this.amount = 0;
     for (let product of this.productsInCart) {
-      allprice.push((product.quantity as number) * product.price);
+      if (product.quantity >= 0) {
+        this.amount += product.quantity * product.price;
+      }
     }
-    this.amount = allprice.reduce((a, b) => a + b);
   }
 
   onSubmit() {
