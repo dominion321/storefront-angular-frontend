@@ -59,3 +59,9 @@ img {
   margin-top: 10px;
   margin-bottom: 10px;
 }
+
+.remove {
+  display: block;
+  padding-left: 10px ;
+
+}

@@ -66,8 +66,8 @@
         <h6>{{ product.name }}</h6>
         <p>${{ product.price }}</p>
         <div class="amount">
-          <label for="amount">Amount:</label>
-          <input
+          <label for="amount">Quantity:</label>
+          <input 
             type="number"
             id="amount"
             name="amount"
@@ -77,19 +77,8 @@
             [(ngModel)]="product.quantity"
             (ngModelChange)="productTotal()"
           />
-          <!-- <div
-            *ngIf="(amount).invalid && (amount.dirty || amount.touched)"
-            class="alert"
-          >
-            <div *ngIf="amount.errors?.['required']">Name is required.</div>
-            <div *ngIf="amount.errors?.['minlength']">
-              Name must be at least 4 characters long.
-            </div>
-            <div *ngIf="amount.errors?.['forbiddenName']">
-              Name cannot be Bob.
-            </div> -->
-          <!-- </div> -->
         </div>
+        <button class="btn btn-primary remove" (click)="removeFromCart(product)">Remove From Cart</button>
       </div>
     </div>
   </div>
@@ -97,3 +86,5 @@
     Total: $ {{ amount.toFixed(2) }}
   </h3>
 </div>
+
+

@@ -3,8 +3,10 @@
   <p>{{ product.name }}</p>
   <p>${{ product.price }}</p>
   <div class="amount">
+    <p>Quantity:</p>
     <select name="amount" class="select-input" id="" [(ngModel)]="product.quantity">
-      <option value="1" selected>1</option>
+      <option value="0" selected disabled hidden>0</option>
+      <option value="1">1</option>
       <option value="2">2</option>
       <option value="3">3</option>
       <option value="4">4</option>

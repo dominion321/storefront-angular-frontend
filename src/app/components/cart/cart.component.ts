@@ -3,6 +3,12 @@ import { Order } from 'src/app/models/order';
 import { Product } from 'src/app/models/product';
 import { CartService } from 'src/app/services/cart.service';
 import { OrderService } from 'src/app/services/order.service';
+import {
+  FormGroup,
+  FormControl,
+  Validators,
+  FormBuilder,
+} from '@angular/forms';
 
 @Component({
   selector: 'app-cart',
@@ -15,39 +21,48 @@ export class CartComponent implements OnInit {
   fullname = '';
   creditcard = 0;
   address = '';
-
+  requiredForm: FormGroup;
 
   productsInCart: Product[] = [];
   constructor(
     private cartService: CartService,
-    private orderService: OrderService
-  ) {}
+    private orderService: OrderService,
+    private fb: FormBuilder
+  ) {
+    this.myForm();
+    this.requiredForm = '' as unknown as FormGroup<any>;
+  }
+
+  myForm() {
+    this.requiredForm = this.fb.group({
+      name: ['', Validators.required],
+    });
+  }
 
   ngOnInit(): void {
     this.productsInCart = this.cartService.getProducts();
-    for(let product of this.productsInCart){
-      this.amount = [product.price * (product.quantity as number)].reduce((a,b) => a+b);
+    for (let product of this.productsInCart) {
+      this.amount = [product.price * (product.quantity as number)].reduce(
+        (a, b) => a + b
+      );
     }
   }
 
   removeFromCart(product: Product) {
-    if (this.quantity === 0) {
-      this.cartService.removeFromCart(product);
-      this.productsInCart = this.productsInCart.filter((p) => p != product);
+    this.cartService.removeFromCart(product);
+    this.productsInCart = this.productsInCart.filter((p) => p != product);
+    this.amount = 0;
+    for(let product of this.productsInCart) {
+      this.amount += (product.quantity * product.price)
     }
   }
 
   productTotal() {
     let allprice = [];
-    for(let product of this.productsInCart) {
-      if(product.quantity === 0) {
-        alert(`${product.name} has been removed.`);
-        this.productsInCart = this.productsInCart.filter((p) => product.id !== p.id);
-        return
-      }
-      allprice.push((product.quantity as number)* product.price)
+    for (let product of this.productsInCart) {
+      allprice.push((product.quantity as number) * product.price);
     }
-    this.amount = allprice.reduce((a,b) => a+b);
+    this.amount = allprice.reduce((a, b) => a + b);
   }
 
   onSubmit() {
@@ -57,5 +72,4 @@ export class CartComponent implements OnInit {
     };
     this.orderService.addToOrder(order);
   }
-
 }
