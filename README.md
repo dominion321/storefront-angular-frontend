@@ -2,14 +2,12 @@
 
 This is an e-commerce web application. It was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.1.3. The goal here is to test out my knowledge of Angular in form of a project.
 
-
-
-
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
 
 ## Flow of operation
+
 When the home directory is accessed, you will see a list of available products for purchase. 
 - Clicking the image of any product will show a complete detail of that product with the product image to the left
 - To add any product to cart, you input the quantity you want for the product and click the Add to Cart button
@@ -19,6 +17,7 @@ When the home directory is accessed, you will see a list of available products f
 
 
 ## Components
+
 This application is made up of six components namely: cart, confirmation, navbar, product-item, product-item-detail, and product-list.
 
 - Cart: This component is a page that shows the list of added products to it and a way to process purchase (or checkout). You will see the added products to cart on the left, a form requiring the user fills his/her details to checkout, and the total amount of the product at the bottom-left of the screen
