@@ -2,40 +2,98 @@
 <div class="cart">
   <div class="form">
     <form #form="ngForm" *ngIf="productsInCart.length !== 0">
-        <div class="form-group">
-          <label for="fullname" class="label">Full name</label>
-          <input type="text" class="form-control" id="fullname" aria-describedby="fullname" placeholder="(minimum 3 character)" name="fullname" required minlength="3" [(ngModel)]="fullname">
-        </div>
-        <div class="form-group">
-          <label class="label" for="address">Address</label>
-          <input type="text" class="form-control" id="address" placeholder="(minimum 6 character)" required minlength="6" name="address" [(ngModel)]="address">
-        </div>
-        <div class="form-group">
-            <label for="creditcard" class="label">Credit Card Number</label>
-            <input type="number" class="form-control input" id="creditcard" aria-describedby="creditcard" placeholder="(16 digit number)" name="creditcard" required minlength="16" [(ngModel)]="creditcard">
-            <small id="creditcard" class="form-text text-muted label">We'll never share your payment details with anyone else.</small>
-          </div>
-        <button type="button" routerLink="/confirmation" class="btn btn-primary label" [disabled]="form.invalid" (click)="onSubmit()">Submit</button>
-      </form>
+      <div class="form-group">
+        <label for="fullname" class="label">Full name</label>
+        <input
+          type="text"
+          class="form-control"
+          id="fullname"
+          aria-describedby="fullname"
+          placeholder="(minimum 3 character)"
+          name="fullname"
+          required
+          minlength="3"
+          [(ngModel)]="fullname"
+        />
+      </div>
+      <div class="form-group">
+        <label class="label" for="address">Address</label>
+        <input
+          type="text"
+          class="form-control"
+          id="address"
+          placeholder="(minimum 6 character)"
+          required
+          minlength="6"
+          name="address"
+          [(ngModel)]="address"
+        />
+      </div>
+      <div class="form-group">
+        <label for="creditcard" class="label">Credit Card Number</label>
+        <input
+          type="number"
+          class="form-control input"
+          id="creditcard"
+          aria-describedby="creditcard"
+          placeholder="(16 digit number)"
+          name="creditcard"
+          required
+          minlength="16"
+          [(ngModel)]="creditcard"
+        />
+        <small id="creditcard" class="form-text text-muted label"
+          >We'll never share your payment details with anyone else.</small
+        >
+      </div>
+      <button
+        type="button"
+        routerLink="/confirmation"
+        class="btn btn-primary label"
+        [disabled]="form.invalid"
+        (click)="onSubmit()"
+      >
+        Submit
+      </button>
+    </form>
   </div>
   <div class="cart-container" *ngFor="let product of productsInCart">
     <div class="cart-item">
-        <div class="img">
-          <img src="{{ product.url }}" alt="" />
-        </div>
-        <div class="cart-details">
-          <h6>{{ product.name }}</h6>
-          <p>${{ product.price }}</p>
-          <div class="amount">
-            <label for="amount">Amount:</label>
-            <input type="number" id="amount" name="amount" value="1" step="1" min="0" [(ngModel)]="product.quantity" (change)="productTotal()">
-          </div>
+      <div class="img">
+        <img src="{{ product.url }}" alt="" />
+      </div>
+      <div class="cart-details">
+        <h6>{{ product.name }}</h6>
+        <p>${{ product.price }}</p>
+        <div class="amount">
+          <label for="amount">Amount:</label>
+          <input
+            type="number"
+            id="amount"
+            name="amount"
+            value="1"
+            step="1"
+            min="0"
+            [(ngModel)]="product.quantity"
+            (ngModelChange)="productTotal()"
+          />
+          <!-- <div
+            *ngIf="(amount).invalid && (amount.dirty || amount.touched)"
+            class="alert"
+          >
+            <div *ngIf="amount.errors?.['required']">Name is required.</div>
+            <div *ngIf="amount.errors?.['minlength']">
+              Name must be at least 4 characters long.
+            </div>
+            <div *ngIf="amount.errors?.['forbiddenName']">
+              Name cannot be Bob.
+            </div> -->
+          <!-- </div> -->
         </div>
       </div>
     </div>
-    <h3 *ngIf="productsInCart.length !== 0" class="total-amount">Total: $ {{ amount.toFixed(2) }}</h3>
- 
-  
-
+  </div>
+  <h3 *ngIf="productsInCart.length !== 0" class="total-amount">
+    Total: $ {{ amount.toFixed(2) }}
+  </h3>
 </div>
-
