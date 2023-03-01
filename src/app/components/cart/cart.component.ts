@@ -8,7 +8,9 @@ import {
   FormControl,
   Validators,
   FormBuilder,
+  AbstractControl,
 } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-cart',
@@ -16,30 +18,33 @@ import {
   styleUrls: ['./cart.component.css'],
 })
 export class CartComponent implements OnInit {
+  creditRegex = /^\d+$/
   quantity = 0;
   amount = 0;
-  fullname = '';
-  creditcard = 0;
-  address = '';
-  requiredForm: FormGroup;
+  submitted = false;
+
+  registerForm = new FormGroup({
+    fullname: new FormControl('', [Validators.required, Validators.minLength(3)]),
+    address: new FormControl('', [Validators.required, Validators.minLength(6)]),
+    creditcard: new FormControl('', [Validators.required, Validators.minLength(12), Validators.pattern(this.creditRegex)])
+  })
 
   productsInCart: Product[] = [];
   constructor(
     private cartService: CartService,
     private orderService: OrderService,
-    private fb: FormBuilder
-  ) {
-    this.myForm();
-    this.requiredForm = '' as unknown as FormGroup<any>;
-  }
+    private fb: FormBuilder,
+    private router: Router
+  ) {  }
 
-  myForm() {
-    this.requiredForm = this.fb.group({
-      name: ['', Validators.required],
-    });
-  }
+  // myForm() {
+  //   this.registerForm = this.fb.group({
+  //     fullname: ,
+  //   });
+  // }
 
   ngOnInit(): void {
+    // this.myForm();
     this.productsInCart = this.cartService.getProducts();
     this.productTotal();
   }
@@ -59,11 +64,23 @@ export class CartComponent implements OnInit {
     }
   }
 
+  getControl(name: any): AbstractControl | null {
+    return this.registerForm.get(name);
+  }
+
+
   onSubmit() {
+    this.submitted = true;
+    console.log(this.submitted);
+    if(this.registerForm.invalid) {
+      return;
+    }
     let order: Order = {
       amount: this.amount,
-      fullname: this.fullname,
+      fullname: this.registerForm.value.fullname as string
     };
     this.orderService.addToOrder(order);
+
+    this.router.navigate(['/confirmation']);
   }
 }
