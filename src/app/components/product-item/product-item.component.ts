@@ -11,18 +11,21 @@ import { ProductItemService } from 'src/app/services/product-item.service';
 export class ProductItemComponent {
   @Input() product: Product;
   @Output() productEmitted = new EventEmitter<number>();
-  
-  productDetail: Product[] =  [];
+
+  productDetail: Product[] = [];
   details: Product[] = [];
 
-  constructor(private cartService:CartService, private productItemService: ProductItemService) {
+  constructor(
+    private cartService: CartService,
+    private productItemService: ProductItemService
+  ) {
     this.product = {
       id: '1',
       name: '',
       price: 0,
       url: '',
       description: '',
-      quantity: 0
+      quantity: 0,
     };
   }
 

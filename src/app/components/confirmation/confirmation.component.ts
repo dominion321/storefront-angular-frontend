@@ -6,17 +6,18 @@ import { OrderService } from 'src/app/services/order.service';
 @Component({
   selector: 'app-confirmation',
   templateUrl: './confirmation.component.html',
-  styleUrls: ['./confirmation.component.css']
+  styleUrls: ['./confirmation.component.css'],
 })
 export class ConfirmationComponent implements OnInit {
-  orders: Order[] = []
-  
+  orders: Order[] = [];
 
-  constructor(private orderService:OrderService, private cartService:CartService){   }
+  constructor(
+    private orderService: OrderService,
+    private cartService: CartService
+  ) {}
 
-ngOnInit(): void {
-  this.orders = this.orderService.getOrder();
-  this.cartService.clearCart();
-
-}
+  ngOnInit(): void {
+    this.orders = this.orderService.getOrder();
+    this.cartService.clearCart();
+  }
 }

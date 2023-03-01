@@ -17,23 +17,33 @@ import { Router } from '@angular/router';
   styleUrls: ['./cart.component.css'],
 })
 export class CartComponent implements OnInit {
-  creditRegex = /^\d+$/
+  creditRegex = /^\d+$/;
   quantity = 0;
   amount = 0;
   submitted = false;
 
   registerForm = new FormGroup({
-    fullname: new FormControl('', [Validators.required, Validators.minLength(3)]),
-    address: new FormControl('', [Validators.required, Validators.minLength(6)]),
-    creditcard: new FormControl('', [Validators.required, Validators.minLength(12), Validators.pattern(this.creditRegex)])
-  })
+    fullname: new FormControl('', [
+      Validators.required,
+      Validators.minLength(3),
+    ]),
+    address: new FormControl('', [
+      Validators.required,
+      Validators.minLength(6),
+    ]),
+    creditcard: new FormControl('', [
+      Validators.required,
+      Validators.minLength(12),
+      Validators.pattern(this.creditRegex),
+    ]),
+  });
 
   productsInCart: Product[] = [];
   constructor(
     private cartService: CartService,
     private orderService: OrderService,
     private router: Router
-  ) {  }
+  ) {}
 
   ngOnInit(): void {
     this.productsInCart = this.cartService.getProducts();
@@ -59,16 +69,15 @@ export class CartComponent implements OnInit {
     return this.registerForm.get(name);
   }
 
-
   onSubmit() {
     this.submitted = true;
     console.log(this.submitted);
-    if(this.registerForm.invalid) {
+    if (this.registerForm.invalid) {
       return;
     }
     let order: Order = {
       amount: this.amount,
-      fullname: this.registerForm.value.fullname as string
+      fullname: this.registerForm.value.fullname as string,
     };
     this.orderService.addToOrder(order);
 

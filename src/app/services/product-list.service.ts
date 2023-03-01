@@ -4,17 +4,14 @@ import { Observable } from 'rxjs';
 import { Product } from '../models/product';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ProductListService {
   private _jsonURL = 'assets/data.json';
 
-  constructor(private http: HttpClient) {
-  }
+  constructor(private http: HttpClient) {}
 
-  public getData(): Observable<Product[]>{
+  public getData(): Observable<Product[]> {
     return this.http.get<Product[]>(this._jsonURL);
   }
-
-  
 }

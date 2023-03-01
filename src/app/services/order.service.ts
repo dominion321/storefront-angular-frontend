@@ -2,20 +2,19 @@ import { Injectable } from '@angular/core';
 import { Order } from '../models/order';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class OrderService {
   order: Order[] = [];
 
-  constructor() { }
+  constructor() {}
 
   addToOrder(order: Order) {
     this.order = [];
     this.order.push(order);
-
   }
 
-  getOrder(){
+  getOrder() {
     return this.order;
   }
 }

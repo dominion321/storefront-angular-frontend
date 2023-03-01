@@ -2,16 +2,15 @@ import { Injectable } from '@angular/core';
 import { Product } from '../models/product';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ProductItemService {
-
   product: Product[] = [];
-  constructor() { }
+  constructor() {}
 
   addToDetails(product: Product) {
-    for(let _ of this.product) {
-      if(_ === product){
+    for (let _ of this.product) {
+      if (_ === product) {
         return;
       }
     }
@@ -22,7 +21,7 @@ export class ProductItemService {
     return this.product;
   }
 
-  clearDetail(){
+  clearDetail() {
     this.product = [];
   }
 }

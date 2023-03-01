@@ -11,18 +11,21 @@ import { ProductItemService } from 'src/app/services/product-item.service';
 export class ProductItemDetailComponent implements OnInit {
   productToShow: Product[] = [];
 
-  constructor(private cartService:CartService ,private productItemService: ProductItemService) {  }
+  constructor(
+    private cartService: CartService,
+    private productItemService: ProductItemService
+  ) {}
 
   ngOnInit(): void {
     this.productToShow = this.productItemService.showDetails();
   }
-  
-  clearDetail(){
+
+  clearDetail() {
     this.productItemService.clearDetail();
     this.productToShow = [];
   }
 
-  addToCart(product: Product){
+  addToCart(product: Product) {
     this.cartService.addToCart(product);
     alert(`${product.name} added to cart`);
   }
