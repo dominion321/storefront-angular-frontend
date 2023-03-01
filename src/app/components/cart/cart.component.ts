@@ -7,7 +7,6 @@ import {
   FormGroup,
   FormControl,
   Validators,
-  FormBuilder,
   AbstractControl,
 } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -33,18 +32,10 @@ export class CartComponent implements OnInit {
   constructor(
     private cartService: CartService,
     private orderService: OrderService,
-    private fb: FormBuilder,
     private router: Router
   ) {  }
 
-  // myForm() {
-  //   this.registerForm = this.fb.group({
-  //     fullname: ,
-  //   });
-  // }
-
   ngOnInit(): void {
-    // this.myForm();
     this.productsInCart = this.cartService.getProducts();
     this.productTotal();
   }
